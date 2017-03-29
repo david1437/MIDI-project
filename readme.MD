@@ -1,3 +1,1 @@
-Python
-
-Made at Polyhacks 2017
+MIDI project
