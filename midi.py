@@ -1,4 +1,5 @@
-import pygame, sys
+#!/usr/bin/env python
+import pygame, sys, os
 import pygame.midi
 import inputbox
 from pygame.locals import *
@@ -15,7 +16,7 @@ pygame.midi.init()
 pygame.display.set_caption("Midi Data Analyzer")
 screen = pygame.display.set_mode((400, 300), RESIZABLE, 32)
 
-myfont = pygame.font.SysFont('monospace', 15)
+myfont = pygame.font.Font('freesansbold.ttf', 15)
 surfacefont = myfont.render('Port Opened Sucessfully!',True,(255,255,255), (0,0,0))
 surfacer = surfacefont.get_rect()
 surfacer.center = (200,150)
@@ -37,7 +38,7 @@ else:
                 i = pygame.midi.Input( pygame.midi.get_default_input_id() )
         except Exception:
                 screen.fill((0,0,0))        
-                surfacefont = myfont.render('No port detected try reconnecting your device!',True,(255,255,255), (0,0,0))
+                surfacefont = myfont.render('No port detected!',True,(255,255,255), (0,0,0))
                 screen.blit(surfacefont, surfacer)
                 pygame.display.update()
                 pygame.time.wait(5000)
