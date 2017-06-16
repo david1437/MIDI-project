@@ -1,3 +1,3 @@
 MIDI project
 
-To use default port press enter
+Need to add support for Unix and Mac OSX
