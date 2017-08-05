@@ -1,3 +1,3 @@
 MIDI project
 
-Need to add support for Unix and Mac OSX
+Tested to work on WIndows and Linux system
