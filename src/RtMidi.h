@@ -40,6 +40,8 @@
   \file RtMidi.h
  */
 
+#define __WINDOWS_MM__
+
 #ifndef RTMIDI_H
 #define RTMIDI_H
 
