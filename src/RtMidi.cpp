@@ -40,10 +40,10 @@
 #include <sstream>
 
 #if defined(__MACOSX_CORE__)
-  #if TARGET_OS_IPHONE
-    #define AudioGetCurrentHostTime CAHostTimeBase::GetCurrentTime
-    #define AudioConvertHostTimeToNanos CAHostTimeBase::ConvertToNanos
-  #endif
+#if TARGET_OS_IPHONE
+#define AudioGetCurrentHostTime CAHostTimeBase::GetCurrentTime
+#define AudioConvertHostTimeToNanos CAHostTimeBase::ConvertToNanos
+#endif
 #endif
 
 //*********************************************************************//
@@ -86,7 +86,7 @@ void RtMidi :: getCompiledApi( std::vector<RtMidi::Api> &apis ) throw()
   apis.push_back( WINDOWS_MM );
 #endif
 #if defined(__RTMIDI_DUMMY__)
-  apis.push_back( RTMIDI_DUMMY );
+  apis.push_back(RTMIDI_DUMMY);
 #endif
 }
 
@@ -94,27 +94,26 @@ void RtMidi :: getCompiledApi( std::vector<RtMidi::Api> &apis ) throw()
 //  RtMidiIn Definitions
 //*********************************************************************//
 
-void RtMidiIn :: openMidiApi( RtMidi::Api api, const std::string clientName, unsigned int queueSizeLimit )
-{
-  if ( rtapi_ )
-    delete rtapi_;
-  rtapi_ = 0;
+void RtMidiIn::openMidiApi(RtMidi::Api api, const std::string clientName,
+                           unsigned int queueSizeLimit) {
+        if (rtapi_) delete rtapi_;
+        rtapi_ = 0;
 
 #if defined(__UNIX_JACK__)
-  if ( api == UNIX_JACK )
-    rtapi_ = new MidiInJack( clientName, queueSizeLimit );
+        if (api == UNIX_JACK)
+                rtapi_ = new MidiInJack(clientName, queueSizeLimit);
 #endif
 #if defined(__LINUX_ALSA__)
-  if ( api == LINUX_ALSA )
-    rtapi_ = new MidiInAlsa( clientName, queueSizeLimit );
+        if (api == LINUX_ALSA)
+                rtapi_ = new MidiInAlsa(clientName, queueSizeLimit);
 #endif
 #if defined(__WINDOWS_MM__)
-  if ( api == WINDOWS_MM )
-    rtapi_ = new MidiInWinMM( clientName, queueSizeLimit );
+        if (api == WINDOWS_MM)
+                rtapi_ = new MidiInWinMM(clientName, queueSizeLimit);
 #endif
 #if defined(__MACOSX_CORE__)
-  if ( api == MACOSX_CORE )
-    rtapi_ = new MidiInCore( clientName, queueSizeLimit );
+        if (api == MACOSX_CORE)
+                rtapi_ = new MidiInCore(clientName, queueSizeLimit);
 #endif
 #if defined(__RTMIDI_DUMMY__)
   if ( api == RTMIDI_DUMMY )

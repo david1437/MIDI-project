@@ -40,7 +40,7 @@
   \file RtMidi.h
  */
 
-//#define __WINDOWS_MM__
+#define __LINUX_ALSA__
 
 #ifndef RTMIDI_H
 #define RTMIDI_H
